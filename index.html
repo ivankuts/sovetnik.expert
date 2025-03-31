@@ -22,13 +22,13 @@
             --success: #4caf50;
             --danger: #ff3b30;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
@@ -36,19 +36,19 @@
             background-color: #fafafa;
             overflow-x: hidden;
         }
-        
+
         a {
             text-decoration: none;
             color: inherit;
         }
-        
+
         .container {
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
+
         .header {
             background-color: var(--white);
             position: fixed;
@@ -58,39 +58,39 @@
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
-        
+
         .header .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
             height: 70px;
         }
-        
+
         .logo {
             display: flex;
             align-items: center;
         }
-        
+
         .logo img {
             height: 30px;
             margin-right: 10px;
         }
-        
+
         .logo-text {
             font-weight: 700;
             font-size: 1.3rem;
             color: var(--dark);
         }
-        
+
         .logo-text span {
             color: var(--primary);
         }
-        
+
         .nav-cta {
             display: flex;
             align-items: center;
         }
-        
+
         .nav-cta a {
             background-color: var(--primary);
             color: var(--white);
@@ -102,16 +102,16 @@
             align-items: center;
             transition: all 0.3s ease;
         }
-        
+
         .nav-cta a:hover {
             background-color: var(--primary-dark);
             transform: translateY(-2px);
         }
-        
+
         .nav-cta i {
             margin-right: 8px;
         }
-        
+
         .hero-section {
             padding: 140px 0 80px;
             text-align: center;
@@ -119,7 +119,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .hero-section::before {
             content: '';
             position: absolute;
@@ -132,7 +132,7 @@
             border-radius: 50%;
             z-index: 0;
         }
-        
+
         .hero-section::after {
             content: '';
             position: absolute;
@@ -145,26 +145,57 @@
             border-radius: 50%;
             z-index: 0;
         }
-        
+
         .hero-content {
             position: relative;
             z-index: 1;
             max-width: 800px;
             margin: 0 auto;
         }
-        
+
         .headline {
             font-size: 3.2rem;
             font-weight: 800;
             line-height: 1.2;
             margin-bottom: 20px;
             color: var(--dark);
+            /* Добавляем относительное позиционирование и минимальную высоту для карусели */
+            position: relative;
+            min-height: 1.2em; /* Высота строки заголовка, чтобы избежать скачков */
+            overflow: hidden; /* Скрываем слайды вне контейнера */
         }
-        
-        .headline span {
+
+        .headline span { /* Стили для выделения в статическом заголовке (если будет) */
             color: var(--primary);
         }
-        
+
+        /* --- Стили для карусели заголовка --- */
+        .headline-carousel .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            opacity: 0; /* Скрываем слайд */
+            transition: opacity 0.6s ease-in-out; /* Плавный переход */
+            visibility: hidden; /* Скрываем из потока */
+            /* Копируем ключевые стили .headline для согласованности */
+            font-size: inherit;
+            font-weight: inherit;
+            line-height: inherit;
+            color: inherit;
+             margin-bottom: 0; /* У слайдов не должно быть отступа */
+        }
+        .headline-carousel .carousel-slide span { /* Стили для выделенного текста внутри слайда */
+             color: var(--primary);
+        }
+        .headline-carousel .carousel-slide.active-slide {
+            opacity: 1; /* Показываем активный слайд */
+            position: relative; /* Возвращаем в поток, чтобы занимал место */
+            visibility: visible; /* Делаем видимым */
+        }
+        /* --- Конец стилей для карусели --- */
+
+
         .subheadline {
             font-size: 1.3rem;
             font-weight: 400;
@@ -172,7 +203,7 @@
             max-width: 700px;
             margin: 0 auto 40px;
         }
-        
+
         .hero-cta {
             display: inline-block;
             background-color: var(--primary);
@@ -186,27 +217,27 @@
             border: none;
             cursor: pointer;
         }
-        
+
         .hero-cta:hover {
             background-color: var(--primary-dark);
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
-        
+
         .section {
             padding: 100px 0;
             position: relative;
         }
-        
+
         .section-alternate {
             background-color: var(--light-gray);
         }
-        
+
         .section-header {
             text-align: center;
             margin-bottom: 60px;
         }
-        
+
         .section-title {
             font-size: 2.5rem;
             font-weight: 800;
@@ -215,25 +246,25 @@
             position: relative;
             display: inline-block;
         }
-        
+
         .section-title span {
             color: var(--primary);
         }
-        
+
         .section-subtitle {
             font-size: 1.1rem;
             color: var(--text-light);
             max-width: 600px;
             margin: 0 auto;
         }
-        
+
         .benefits-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 40px;
         }
-        
+
         .benefit-card {
             background-color: var(--white);
             border-radius: 12px;
@@ -243,38 +274,38 @@
             display: flex;
             flex-direction: column;
         }
-        
+
         .benefit-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
-        
+
         .benefit-icon {
             font-size: 2rem;
             color: var(--primary);
             margin-bottom: 20px;
         }
-        
+
         .benefit-title {
             font-size: 1.3rem;
             font-weight: 700;
             margin-bottom: 15px;
             color: var(--dark);
         }
-        
+
         .benefit-desc {
             color: var(--text-light);
             flex-grow: 1;
             font-size: 1rem;
         }
-        
+
         .process-steps {
             counter-reset: step-counter;
             position: relative;
             max-width: 800px;
             margin: 0 auto;
         }
-        
+
         .process-steps::before {
             content: '';
             position: absolute;
@@ -285,13 +316,13 @@
             background-color: var(--primary);
             opacity: 0.2;
         }
-        
+
         .process-step {
             display: flex;
             margin-bottom: 50px;
             position: relative;
         }
-        
+
         .process-step-number {
             width: 60px;
             height: 60px;
@@ -308,31 +339,39 @@
             position: relative;
             z-index: 2;
         }
-        
+
         .process-step-content {
             padding-top: 5px;
         }
-        
+
         .process-step-title {
             font-size: 1.4rem;
             font-weight: 700;
             margin-bottom: 10px;
             color: var(--dark);
         }
-        
+
+         /* Стили для иконки перед заголовком этапа */
+        .process-step-title i {
+            margin-right: 10px;
+            color: var(--primary);
+            font-size: 1.2em; /* Немного больше основного текста заголовка */
+            vertical-align: middle; /* Выравнивание иконки по центру текста */
+        }
+
         .process-step-desc {
             color: var(--text-light);
             font-size: 1rem;
             max-width: 550px;
         }
-        
+
         .results-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
             margin-top: 40px;
         }
-        
+
         .result-card {
             background-color: var(--white);
             border-radius: 12px;
@@ -341,12 +380,12 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
         }
-        
+
         .result-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
-        
+
         .result-number {
             font-size: 3.5rem;
             font-weight: 800;
@@ -354,21 +393,21 @@
             margin-bottom: 15px;
             line-height: 1;
         }
-        
+
         .result-number.increase {
             color: var(--success);
         }
-        
+
         .result-number.decrease {
             color: var(--danger);
         }
-        
+
         .result-label {
             font-size: 1.1rem;
             color: var(--text);
             font-weight: 500;
         }
-        
+
         .cta-section {
             background-color: var(--primary);
             color: var(--white);
@@ -377,7 +416,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .cta-section::before {
             content: '';
             position: absolute;
@@ -388,7 +427,7 @@
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
         }
-        
+
         .cta-section::after {
             content: '';
             position: absolute;
@@ -399,26 +438,26 @@
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
         }
-        
+
         .cta-content {
             position: relative;
             z-index: 1;
             max-width: 700px;
             margin: 0 auto;
         }
-        
+
         .cta-title {
             font-size: 2.5rem;
             font-weight: 800;
             margin-bottom: 20px;
         }
-        
+
         .cta-subtitle {
             font-size: 1.1rem;
             opacity: 0.9;
             margin-bottom: 40px;
         }
-        
+
         .cta-button {
             display: inline-block;
             background-color: var(--white);
@@ -431,56 +470,56 @@
             border: none;
             cursor: pointer;
         }
-        
+
         .cta-button:hover {
             background-color: rgba(255, 255, 255, 0.9);
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
-        
+
         .footer {
             background-color: var(--dark);
             color: var(--white);
             padding: 60px 0 30px;
         }
-        
+
         .footer-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
         }
-        
+
         .footer-column {
             margin-bottom: 20px;
         }
-        
+
         .footer-logo {
             display: flex;
             align-items: center;
             margin-bottom: 20px;
         }
-        
+
         .footer-logo img {
             height: 30px;
             margin-right: 10px;
         }
-        
+
         .footer-logo-text {
             font-weight: 700;
             font-size: 1.3rem;
             color: var(--white);
         }
-        
+
         .footer-logo-text span {
             color: var(--primary);
         }
-        
+
         .footer-desc {
             color: rgba(255, 255, 255, 0.7);
             margin-bottom: 20px;
             font-size: 0.9rem;
         }
-        
+
         .footer-title {
             font-size: 1.1rem;
             font-weight: 700;
@@ -488,7 +527,7 @@
             position: relative;
             padding-bottom: 10px;
         }
-        
+
         .footer-title::after {
             content: '';
             position: absolute;
@@ -498,38 +537,48 @@
             height: 2px;
             background-color: var(--primary);
         }
-        
+
         .footer-links,
         .footer-contact {
             list-style: none;
         }
-        
+
         .footer-links li,
         .footer-contact li {
             margin-bottom: 12px;
         }
-        
+
+         /* Стили для иконок в подвале */
+        .footer-links i {
+            margin-right: 8px;
+            color: var(--primary);
+            width: 16px; /* Фиксированная ширина для выравнивания */
+            text-align: center;
+            opacity: 0.7; /* Менее яркие, чем в контактах */
+        }
+
         .footer-links a,
         .footer-contact a {
             color: rgba(255, 255, 255, 0.7);
             transition: all 0.3s ease;
             font-size: 0.9rem;
-            display: inline-block;
+            display: inline-flex; /* Используем flex для лучшего выравнивания иконки и текста */
+            align-items: center; /* Выравниваем иконку и текст по вертикали */
         }
-        
+
         .footer-links a:hover,
         .footer-contact a:hover {
             color: var(--white);
             transform: translateX(3px);
         }
-        
+
         .footer-contact i {
             color: var(--primary);
             margin-right: 10px;
             width: 20px;
             text-align: center;
         }
-        
+
         .footer-bottom {
             margin-top: 40px;
             padding-top: 20px;
@@ -538,112 +587,113 @@
             color: rgba(255, 255, 255, 0.5);
             font-size: 0.8rem;
         }
-        
+
         @media (max-width: 992px) {
             .headline {
                 font-size: 2.8rem;
             }
-            
+
             .subheadline {
                 font-size: 1.1rem;
             }
-            
+
             .section-title {
                 font-size: 2.2rem;
             }
         }
-        
+
         @media (max-width: 768px) {
             .headline {
                 font-size: 2.2rem;
             }
-            
+
             .subheadline {
                 font-size: 1rem;
             }
-            
+
             .section {
                 padding: 60px 0;
             }
-            
+
             .section-title {
                 font-size: 1.8rem;
             }
-            
+
             .section-subtitle {
                 font-size: 1rem;
             }
-            
+
             .benefit-card {
                 padding: 25px;
             }
-            
+
             .result-card {
                 padding: 30px 20px;
             }
-            
+
             .result-number {
                 font-size: 3rem;
             }
-            
+
             .cta-title {
                 font-size: 2rem;
             }
         }
-        
+
         @media (max-width: 576px) {
             .hero-section {
                 padding: 120px 0 60px;
             }
-            
+
             .headline {
                 font-size: 1.8rem;
+                 min-height: 2.4em; /* Адаптируем высоту для карусели на мобильных */
             }
-            
+
             .subheadline {
                 font-size: 0.95rem;
             }
-            
+
             .hero-cta {
                 padding: 14px 30px;
                 font-size: 1rem;
             }
-            
+
             .section {
                 padding: 50px 0;
             }
-            
+
             .section-title {
                 font-size: 1.6rem;
             }
-            
+
             .benefit-card {
                 padding: 20px;
             }
-            
+
             .benefit-title {
                 font-size: 1.1rem;
             }
-            
+
             .process-step-number {
                 width: 50px;
                 height: 50px;
                 font-size: 1.2rem;
             }
-            
+
             .process-step-title {
                 font-size: 1.2rem;
             }
-            
+
             .cta-title {
                 font-size: 1.6rem;
             }
-            
+
             .cta-button {
                 padding: 14px 30px;
                 font-size: 1rem;
             }
-            
+
             .process-steps::before {
                 left: 24px;
             }
@@ -668,7 +718,19 @@
     <section class="hero-section">
         <div class="container">
             <div class="hero-content">
-                <h1 class="headline">Выживание не является обязанностью. <span>Адаптируйся</span> или умри</h1>
+                 <!-- Карусель для заголовка -->
+                <div id="headline-carousel" class="headline headline-carousel">
+                     <div class="carousel-slide active-slide">Выживание не является обязанностью. <span>Адаптируйся</span> или умри</div>
+                     <div class="carousel-slide">Что делать с убыточным бизнесом? <span>Закрыть</span> или тащить?</div>
+                     <div class="carousel-slide">Ваш бизнес <span>успевает</span> за рынком, или уже отстает?</div>
+                     <div class="carousel-slide">Кризис – время <span>расти</span>, а не выживать.</div>
+                     <div class="carousel-slide">Прибыль <span>тает</span>? Найдем утечку и остановим.</div>
+                     <div class="carousel-slide">Перестаньте <span>тушить пожары</span>. Начните строить систему.</div>
+                     <div class="carousel-slide">Конкуренты <span>обгоняют</span>? Мы знаем, как их опередить.</div>
+                     <div class="carousel-slide">Неопределенность – ваш <span>риск</span> или ваша возможность?</div>
+                     <div class="carousel-slide">Когда штормит, нужен <span>опытный</span> капитан. А у вас?</div>
+                     <!-- Добавьте другие слайды сюда -->
+                </div>
                 <p class="subheadline">
                     Глубокий консалтинг — это внедрение изменений, а не отчеты. Мы сделаем вашу компанию региональным лидером по эффективности, сохранив уникальную культуру. Выживание не гарантировано — адаптируйтесь или проиграйте.
                 </p>
@@ -684,32 +746,32 @@
                 <h2 class="section-title">Ключевые <span>преимущества</span></h2>
                 <p class="section-subtitle">Мы не просто консультируем — мы трансформируем бизнес-процессы для достижения измеримых результатов</p>
             </div>
-            
+
             <div class="benefits-grid">
                 <div class="benefit-card">
                     <div class="benefit-icon"><i class="fas fa-chart-line"></i></div>
                     <h3 class="benefit-title">Эффективность</h3>
                     <p class="benefit-desc">Снижение затрат и рост производительности через оптимизацию процессов.</p>
                 </div>
-                
+
                 <div class="benefit-card">
                     <div class="benefit-icon"><i class="fas fa-users"></i></div>
                     <h3 class="benefit-title">Команда</h3>
                     <p class="benefit-desc">Развитие руководителей с индивидуальными планами роста.</p>
                 </div>
-                
+
                 <div class="benefit-card">
                     <div class="benefit-icon"><i class="fas fa-money-bill-wave"></i></div>
                     <h3 class="benefit-title">Прибыль</h3>
                     <p class="benefit-desc">Увеличение EBITDA и конкурентоспособности.</p>
                 </div>
-                
+
                 <div class="benefit-card">
                     <div class="benefit-icon"><i class="fas fa-building"></i></div>
                     <h3 class="benefit-title">Культура</h3>
                     <p class="benefit-desc">Изменения без потери идентичности компании.</p>
                 </div>
-                
+
                 <div class="benefit-card">
                     <div class="benefit-icon"><i class="fas fa-crown"></i></div>
                     <h3 class="benefit-title">Лидерство</h3>
@@ -726,7 +788,7 @@
                 <h2 class="section-title">Как мы <span>работаем</span></h2>
                 <p class="section-subtitle">Наша методология позволяет добиться видимых результатов уже в первые месяцы работы</p>
             </div>
-            
+
             <div class="process-steps">
                 <div class="process-step">
                     <div class="process-step-number">1</div>
@@ -735,7 +797,7 @@
                         <p class="process-step-desc">Выявляем проблемы и точки роста.</p>
                     </div>
                 </div>
-                
+
                 <div class="process-step">
                     <div class="process-step-number">2</div>
                     <div class="process-step-content">
@@ -743,7 +805,7 @@
                         <p class="process-step-desc">Проверяем компетенции и потенциал.</p>
                     </div>
                 </div>
-                
+
                 <div class="process-step">
                     <div class="process-step-number">3</div>
                     <div class="process-step-content">
@@ -751,7 +813,7 @@
                         <p class="process-step-desc">Анализируем бизнес-процессы на практике.</p>
                     </div>
                 </div>
-                
+
                 <div class="process-step">
                     <div class="process-step-number">4</div>
                     <div class="process-step-content">
@@ -759,7 +821,7 @@
                         <p class="process-step-desc">Вводим системы управления и прозрачности.</p>
                     </div>
                 </div>
-                
+
                 <div class="process-step">
                     <div class="process-step-number">5</div>
                     <div class="process-step-content">
@@ -767,7 +829,7 @@
                         <p class="process-step-desc">Настраиваем мониторинг и обратную связь.</p>
                     </div>
                 </div>
-                
+
                 <div class="process-step">
                     <div class="process-step-number">6</div>
                     <div class="process-step-content">
@@ -775,7 +837,7 @@
                         <p class="process-step-desc">Создаем планы для лидеров.</p>
                     </div>
                 </div>
-                
+
                 <div class="process-step">
                     <div class="process-step-number">7</div>
                     <div class="process-step-content">
@@ -783,7 +845,7 @@
                         <p class="process-step-desc">Оптимизируем стратегии продаж.</p>
                     </div>
                 </div>
-                
+
                 <div class="process-step">
                     <div class="process-step-number">8</div>
                     <div class="process-step-content">
@@ -802,23 +864,23 @@
                 <h2 class="section-title">Измеримые <span>результаты</span></h2>
                 <p class="section-subtitle">Наша программа трансформации приносит конкретные измеримые результаты</p>
             </div>
-            
+
             <div class="results-container">
                 <div class="result-card">
                     <div class="result-number increase">+30%</div>
                     <div class="result-label">Рост EBITDA в первый год</div>
                 </div>
-                
+
                 <div class="result-card">
                     <div class="result-number decrease">-20%</div>
                     <div class="result-label">Снижение затрат</div>
                 </div>
-                
+
                 <div class="result-card">
                     <div class="result-number">80%</div>
                     <div class="result-label">Руководителей улучшают навыки</div>
                 </div>
-                
+
                 <div class="result-card">
                     <div class="result-number increase">+15%</div>
                     <div class="result-label">Рост доли рынка</div>
@@ -849,14 +911,14 @@
                     </div>
                     <p class="footer-desc">Глубокий консалтинг для бизнеса и лидеров. Мы помогаем компаниям стать лидерами отрасли через стратегические преобразования.</p>
                 </div>
-                
+
                 <div class="footer-column">
                     <h3 class="footer-title">Контакты</h3>
                     <ul class="footer-contact">
                         <li><a href="https://t.me/ivan_kuts" target="_blank"><i class="fab fa-telegram"></i> Написать в Телеграм</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="footer-column">
                     <h3 class="footer-title">Этапы программы</h3>
                     <ul class="footer-links">
@@ -871,11 +933,54 @@
                     </ul>
                 </div>
             </div>
-            
+
             <div class="footer-bottom">
                 <p>&copy; 2024 Deep Consulting. Все права защищены.</p>
             </div>
         </div>
     </footer>
+
+     <script>
+        // --- JavaScript для карусели заголовка ---
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousel = document.getElementById('headline-carousel');
+            if (carousel) {
+                const slides = carousel.querySelectorAll('.carousel-slide');
+                if (slides.length > 1) {
+                    let currentSlide = 0;
+                    const slideInterval = 5000; // Интервал 5 секунд
+
+                    function showSlide(index) {
+                        slides.forEach((slide, i) => {
+                            if (i === index) {
+                                slide.classList.add('active-slide');
+                            } else {
+                                slide.classList.remove('active-slide');
+                            }
+                        });
+                    }
+
+                    function nextSlide() {
+                        currentSlide = (currentSlide + 1) % slides.length;
+                        showSlide(currentSlide);
+                    }
+
+                    // Показать первый слайд
+                    showSlide(currentSlide);
+                    // Запустить автоматическую смену
+                    setInterval(nextSlide, slideInterval);
+
+                } else if (slides.length === 1) {
+                     // Если только один слайд, делаем его видимым
+                     slides[0].classList.add('active-slide');
+                     slides[0].style.position = 'relative'; // Убедимся, что он занимает место
+                }
+            } else {
+                console.error("Элемент карусели с ID 'headline-carousel' не найден.");
+            }
+        });
+        // --- Конец JavaScript ---
+    </script>
+
 </body>
 </html> 
